@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     initializeEventListeners();
     renderPredictions();
     updateStats();
+    loadBitcoinPrice();
+    setInterval(loadBitcoinPrice, 60000);
 });
 
 // ========== 加载数据 ==========
@@ -28,9 +30,33 @@ async function loadPredictions() {
     }
 }
 
+// ========== 加载比特币实时价格 ==========
+async function loadBitcoinPrice() {
+    try {
+        const response = await fetch('https://ahr999.btchao.com/api/ahr999/latest');
+        const data = await response.json();
+        
+        if (data && data.currentPrice) {
+            const price = data.currentPrice;
+            document.getElementById('livePrice').textContent = '$' + price.toLocaleString();
+            
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('zh-CN', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+            document.getElementById('priceUpdateTime').textContent = `更新于 ${timeStr}`;
+        }
+    } catch (error) {
+        console.error('加载比特币价格失败:', error);
+        document.getElementById('livePrice').textContent = '加载失败';
+        document.getElementById('priceUpdateTime').textContent = '无法获取价格';
+    }
+}
+
 // ========== 主题切换 ==========
 function initializeTheme() {
-    const theme = localStorage.getItem('theme') || 'dark';
+    const theme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', theme);
     updateThemeIcon(theme);
 }

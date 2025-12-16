@@ -62,6 +62,18 @@
       "sentiment": "bullish",
       "content": "前BitMEX联合创始人兼前CEO Arthur Hayes坚持预测，比特币（BTC）将在年底前涨至25万美元。",
       "sourceUrl": "https://www.jinse.cn/lives/489223.html"
+    },
+    {
+      "id": 6,
+      "date": "2025-11-03",
+      "institution": "BitMine",
+      "person": "Tom Lee",
+      "role": "董事长",
+      "targetPrice": 175000,
+      "targetDate": "2025年底",
+      "sentiment": "bullish",
+      "content": "董事长 Tom Lee 重申了此前的年底价格预测，预计比特币将涨至 15-20 万美元区间。",
+      "sourceUrl": "https://www.jinse.cn/lives/485328.html"
     }
   ]
 }

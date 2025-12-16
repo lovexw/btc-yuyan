@@ -161,6 +161,26 @@ body {
     letter-spacing: 1px;
 }
 
+.live-price-card {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    border: 2px solid var(--accent-primary);
+}
+
+.live-price-card .stat-value {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+.price-update-time {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+}
+
 /* ========== 搜索和筛选 ========== */
 .controls {
     margin-bottom: 2rem;
