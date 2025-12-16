@@ -4,8 +4,8 @@ let filteredPredictions = [];
 
 // ========== 初始化 ==========
 document.addEventListener('DOMContentLoaded', async () => {
-    await loadPredictions();
     initializeTheme();
+    await loadPredictions();
     initializeEventListeners();
     renderPredictions();
     updateStats();
@@ -56,8 +56,13 @@ async function loadBitcoinPrice() {
 
 // ========== 主题切换 ==========
 function initializeTheme() {
-    const theme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', theme);
+    const storedTheme = localStorage.getItem('theme');
+    const theme = storedTheme || 'light';
+    
+    if (storedTheme) {
+        document.documentElement.setAttribute('data-theme', theme);
+    }
+    
     updateThemeIcon(theme);
 }
 
