@@ -185,7 +185,10 @@ function createPredictionCard(pred) {
         <div class="prediction-card" data-id="${pred.id}">
             <div class="prediction-header">
                 <div class="prediction-institution">
-                    <div class="institution-name">${pred.institution}</div>
+                    <div class="institution-row">
+                        <div class="institution-name">${pred.institution}</div>
+                        <span class="prediction-date">📅 ${formatDate(pred.date)}</span>
+                    </div>
                     ${personHtml}
                 </div>
                 <span class="sentiment-badge sentiment-${pred.sentiment}">
@@ -208,7 +211,6 @@ function createPredictionCard(pred) {
             ${imageHtml}
             
             <div class="prediction-footer">
-                <span class="prediction-date">📅 ${formatDate(pred.date)}</span>
                 <a href="${pred.sourceUrl}" target="_blank" rel="noopener noreferrer" class="source-link">
                     查看原文 →
                 </a>
