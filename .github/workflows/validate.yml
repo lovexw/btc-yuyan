@@ -1,0 +1,71 @@
+name: Validate Data
+
+on:
+  push:
+    paths:
+      - 'data/predictions.json'
+  pull_request:
+    paths:
+      - 'data/predictions.json'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      
+      - name: Validate JSON format
+        run: |
+          python3 -m json.tool data/predictions.json > /dev/null
+          echo "✅ JSON 格式验证通过"
+      
+      - name: Validate data structure
+        run: |
+          python3 << 'EOF'
+          import json
+          import sys
+          
+          # 读取数据
+          with open('data/predictions.json', 'r', encoding='utf-8') as f:
+              data = json.load(f)
+          
+          predictions = data.get('predictions', [])
+          
+          if not predictions:
+              print("❌ 错误：预测数据为空")
+              sys.exit(1)
+          
+          # 验证必填字段
+          required_fields = ['id', 'date', 'institution', 'targetPrice', 'targetDate', 'sentiment', 'content', 'sourceUrl']
+          
+          for i, pred in enumerate(predictions):
+              for field in required_fields:
+                  if field not in pred or not pred[field]:
+                      print(f"❌ 错误：第 {i+1} 条记录缺少必填字段: {field}")
+                      sys.exit(1)
+              
+              # 验证 sentiment 值
+              if pred['sentiment'] not in ['bullish', 'bearish', 'neutral']:
+                  print(f"❌ 错误：第 {i+1} 条记录的 sentiment 值无效: {pred['sentiment']}")
+                  sys.exit(1)
+              
+              # 验证价格为正数
+              if pred['targetPrice'] <= 0:
+                  print(f"❌ 错误：第 {i+1} 条记录的价格必须为正数")
+                  sys.exit(1)
+          
+          # 验证 ID 唯一性
+          ids = [p['id'] for p in predictions]
+          if len(ids) != len(set(ids)):
+              print("❌ 错误：存在重复的 ID")
+              sys.exit(1)
+          
+          print(f"✅ 数据验证通过！共 {len(predictions)} 条记录")
+          EOF
