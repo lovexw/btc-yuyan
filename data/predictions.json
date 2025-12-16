@@ -1,0 +1,67 @@
+{
+  "predictions": [
+    {
+      "id": 1,
+      "date": "2025-12-15",
+      "institution": "彭博智库",
+      "person": "Mike McGlone",
+      "role": "高级大宗商品策略师",
+      "targetPrice": 10000,
+      "targetDate": "2026",
+      "change": -88,
+      "sentiment": "bearish",
+      "content": "警告称，比特币价格面临暴跌 88% 至 1 万美元的风险，预计将在 2026 年触及该水平。",
+      "sourceUrl": "https://www.jinse.cn/lives/491625.html"
+    },
+    {
+      "id": 2,
+      "date": "2025-12-09",
+      "institution": "渣打银行",
+      "person": "",
+      "role": "",
+      "targetPrice": 100000,
+      "targetDate": "2025",
+      "longTermPrice": 500000,
+      "longTermDate": "2030",
+      "sentiment": "neutral",
+      "content": "已将2025年比特币价格预测下调一半至 10 万美元。同时，该银行将其 50 万美元的长期目标推迟到 2030 年，原定时间为 2028 年。",
+      "sourceUrl": "https://www.jinse.cn/lives/490762.html"
+    },
+    {
+      "id": 3,
+      "date": "2025-12-05",
+      "institution": "摩根大通",
+      "person": "",
+      "role": "",
+      "targetPrice": 170000,
+      "targetDate": "2026年中",
+      "sentiment": "bullish",
+      "content": "华尔街银行摩根大通仍坚持其预测，即未来六到十二个月内比特币的理论价格将接近17万美元。",
+      "sourceUrl": "https://www.jinse.cn/lives/490267.html"
+    },
+    {
+      "id": 4,
+      "date": "2025-12-06",
+      "institution": "Exodus",
+      "person": "首席执行官",
+      "role": "CEO",
+      "targetPrice": 200000,
+      "targetDate": "2026",
+      "sentiment": "bullish",
+      "content": "美股上市公司 Exodus 首席执行官在 CNBC 接受采访时预测，比特币价格将在 2026 年达到 20 万美元。",
+      "sourceUrl": "https://www.jinse.cn/lives/490307.html"
+    },
+    {
+      "id": 5,
+      "date": "2025-11-29",
+      "institution": "BitMEX",
+      "person": "Arthur Hayes",
+      "role": "前联合创始人兼前CEO",
+      "targetPrice": 250000,
+      "targetDate": "2025年底",
+      "sentiment": "bullish",
+      "content": "前BitMEX联合创始人兼前CEO Arthur Hayes坚持预测，比特币（BTC）将在年底前涨至25万美元。",
+      "sourceUrl": "https://www.jinse.cn/lives/489223.html"
+    }
+  ]
+}

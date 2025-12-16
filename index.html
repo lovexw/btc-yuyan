@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="比特币价格预测归档 - 收集并归档来自全球金融机构和专家对比特币价格的预测，包括摩根大通、彭博智库、渣打银行等权威机构的预测数据">
+    <meta name="keywords" content="比特币,BTC,价格预测,Bitcoin,加密货币,数字货币,金融预测,投资分析">
+    <meta name="author" content="BTC Predictions Archive">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="比特币价格预测归档 | BTC Predictions Archive">
+    <meta property="og:description" content="收集并归档来自全球金融机构和专家对比特币价格的预测">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="zh_CN">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="比特币价格预测归档">
+    <meta name="twitter:description" content="收集并归档来自全球金融机构和专家对比特币价格的预测">
+    
+    <title>比特币价格预测归档 | BTC Predictions Archive</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">
+                    <span class="btc-icon">₿</span>
+                    比特币价格预测归档
+                </h1>
+                <p class="subtitle">Bitcoin Price Predictions Archive</p>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </header>
+
+        <!-- 统计信息 -->
+        <section class="stats">
+            <div class="stat-card">
+                <div class="stat-value" id="totalPredictions">-</div>
+                <div class="stat-label">总预测数</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="avgPrice">-</div>
+                <div class="stat-label">平均预测价格</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="highestPrice">-</div>
+                <div class="stat-label">最高预测</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="lowestPrice">-</div>
+                <div class="stat-label">最低预测</div>
+            </div>
+        </section>
+
+        <!-- 搜索和筛选 -->
+        <section class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="搜索机构、人名或内容..." />
+                <span class="search-icon">🔍</span>
+            </div>
+            
+            <div class="filters">
+                <select id="sentimentFilter" class="filter-select">
+                    <option value="all">全部情绪</option>
+                    <option value="bullish">看涨 📈</option>
+                    <option value="bearish">看跌 📉</option>
+                    <option value="neutral">中性 ➡️</option>
+                </select>
+                
+                <select id="sortBy" class="filter-select">
+                    <option value="date-desc">日期 (新→旧)</option>
+                    <option value="date-asc">日期 (旧→新)</option>
+                    <option value="price-desc">价格 (高→低)</option>
+                    <option value="price-asc">价格 (低→高)</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- 预测列表 -->
+        <section class="predictions" id="predictionsContainer">
+            <!-- 动态生成 -->
+        </section>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <p>数据来源于公开报道，仅供参考，不构成投资建议</p>
+            <p class="footer-links">
+                <a href="https://github.com" target="_blank">GitHub</a>
+                <span>•</span>
+                <span id="lastUpdated">最后更新: -</span>
+            </p>
+        </footer>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
