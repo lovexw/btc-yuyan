@@ -74,6 +74,19 @@
       "sentiment": "bullish",
       "content": "董事长 Tom Lee 重申了此前的年底价格预测，预计比特币将涨至 15-20 万美元区间。",
       "sourceUrl": "https://www.jinse.cn/lives/485328.html"
+    },
+    {
+      "id": 7,
+      "date": "2025-12-16",
+      "institution": "日本央行",
+      "person": "",
+      "role": "",
+      "targetPrice": 95000,
+      "targetDate": "2026年第一季度",
+      "sentiment": "bearish",
+      "content": "日本央行即将开始加息对比特币价格影响的可能性分析，预期将导致比特币价格承压。",
+      "sourceUrl": "无",
+      "imageUrl": "https://tc.xiaowuleyi.com/file/1765854917874_image.png"
     }
   ]
 }
