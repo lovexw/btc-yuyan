@@ -176,6 +176,11 @@ function createPredictionCard(pred) {
         `<div class="person-info">${pred.person} ${pred.role ? `- ${pred.role}` : ''}</div>` : 
         (pred.role ? `<div class="person-info">${pred.role}</div>` : '');
     
+    const imageHtml = pred.imageUrl ? 
+        `<div class="prediction-image">
+            <img src="${pred.imageUrl}" alt="相关图片" loading="lazy" onclick="openImageModal('${pred.imageUrl}', '${pred.institution}')">
+        </div>` : '';
+    
     return `
         <div class="prediction-card" data-id="${pred.id}">
             <div class="prediction-header">
@@ -190,7 +195,7 @@ function createPredictionCard(pred) {
             
             <div class="prediction-price">
                 <div class="price-label">目标价格</div>
-                <div class="price-value">$${pred.targetPrice.toLocaleString()}</div>
+                <div class="price-value">${pred.targetPrice.toLocaleString()}</div>
                 <div class="price-date">预期时间: ${pred.targetDate}</div>
                 ${changeHtml}
                 ${longTermHtml}
@@ -199,6 +204,8 @@ function createPredictionCard(pred) {
             <div class="prediction-content">
                 ${pred.content}
             </div>
+            
+            ${imageHtml}
             
             <div class="prediction-footer">
                 <span class="prediction-date">📅 ${formatDate(pred.date)}</span>
@@ -232,6 +239,39 @@ function formatDate(dateString) {
         month: 'long',
         day: 'numeric'
     });
+}
+
+// ========== 图片模态框 ==========
+function openImageModal(imageUrl, institution) {
+    // 创建模态框元素
+    const modal = document.createElement('div');
+    modal.className = 'image-modal';
+    modal.innerHTML = `
+        <div class="image-modal-overlay" onclick="closeImageModal()"></div>
+        <div class="image-modal-content">
+            <button class="image-modal-close" onclick="closeImageModal()">×</button>
+            <img src="${imageUrl}" alt="相关图片" class="image-modal-img">
+            <div class="image-modal-caption">${institution}</div>
+        </div>
+    `;
+    
+    // 添加到页面
+    document.body.appendChild(modal);
+    
+    // 显示模态框
+    setTimeout(() => {
+        modal.classList.add('show');
+    }, 10);
+}
+
+function closeImageModal() {
+    const modal = document.querySelector('.image-modal');
+    if (modal) {
+        modal.classList.remove('show');
+        setTimeout(() => {
+            document.body.removeChild(modal);
+        }, 300);
+    }
 }
 
 // ========== 平滑滚动 ==========
