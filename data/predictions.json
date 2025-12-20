@@ -111,6 +111,19 @@
       "sentiment": "bullish",
       "content": "Global Macro Investor 宏观研究主管 Julien Bittel 的分析，比特币可能在不到三个月的时间内上涨至 170,000 美元。",
       "sourceUrl": "https://www.jinse.cn/lives/492387.html"
+    },
+    {
+      "id": 10,
+      "date": "2025-12-20",
+      "institution": "Trending Bitcoin",
+      "person": "",
+      "role": "",
+      "targetPrice": 40000,
+      "targetDate": "2026年内",
+      "sentiment": "bearish",
+      "content": "分析师Trending Bitcoin，认为2026年内的某个时间，比特币会下跌70%，价格到达4万美金。",
+      "sourceUrl": "https://x.com/TrendingBitcoin/status/2002230226323923265",
+      "imageUrl": "https://tc.xiaowuleyi.com/file/1766232468994_image.png"
     }
   ]
 }
