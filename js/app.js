@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initializeTheme();
     await loadPredictions();
     initializeEventListeners();
-    renderPredictions();
+    filterAndRender(); // 确保应用默认排序（日期新到旧）
     updateStats();
     loadBitcoinPrice();
     setInterval(loadBitcoinPrice, 60000);
@@ -100,7 +100,7 @@ function initializeEventListeners() {
 function filterAndRender() {
     const searchTerm = document.getElementById('searchInput').value.toLowerCase();
     const sentimentFilter = document.getElementById('sentimentFilter').value;
-    const sortBy = document.getElementById('sortBy').value;
+    const sortBy = document.getElementById('sortBy').value || 'date-desc'; // 默认按日期新到旧排序
     
     // 筛选
     filteredPredictions = allPredictions.filter(pred => {
@@ -128,7 +128,7 @@ function filterAndRender() {
             case 'price-asc':
                 return a.targetPrice - b.targetPrice;
             default:
-                return 0;
+                return new Date(b.date) - new Date(a.date); // 默认按日期新到旧排序
         }
     });
     
