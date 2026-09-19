@@ -22,19 +22,22 @@
 
 ```json
 {
-  "id": 1,
-  "date": "2025-12-15",
-  "institution": "彭博智库",
-  "person": "Mike McGlone",
-  "role": "高级大宗商品策略师",
-  "targetPrice": 10000,
-  "targetDate": "2026",
-  "change": -88,
+  "id": 17,
+  "date": "2026-06-12",
+  "institution": "Galaxy Research",
+  "person": "Alex Thorn",
+  "role": "研究主管",
+  "category": "research",
+  "targetPrice": 43000,
+  "priceRange": [40000, 46000],
+  "targetDate": "2026年第四季度（周期底部）",
+  "targetYear": "2026",
   "sentiment": "bearish",
-  "content": "警告称，比特币价格面临暴跌 88% 至 1 万美元的风险，预计将在 2026 年触及该水平。",
-  "sourceUrl": "https://www.jinse.cn/lives/491625.html",
-  "longTermPrice": 50000,
-  "longTermDate": "2030"
+  "quoteEn": "Historical bear-market bottoms arrive 12-13 months after the cycle peak.",
+  "content": "Galaxy Research 基于周期规律给出四种底部情景，基准情形为 4–4.6 万美元。",
+  "sourceName": "Galaxy Research",
+  "sourceUrl": "https://news.google.com/…",
+  "imageUrl": "https://…/screenshot.png"
 }
 ```
 
@@ -45,23 +48,31 @@
 | 字段 | 类型 | 说明 | 示例 |
 |------|------|------|------|
 | `id` | Number | 唯一标识符，递增整数 | `1` |
-| `date` | String | 预测发布日期，ISO 8601 格式 | `"2025-12-15"` |
-| `institution` | String | 发布预测的机构或公司名称 | `"摩根大通"` |
-| `targetPrice` | Number | 目标价格（美元），正整数 | `170000` |
+| `date` | String | 预测发布日期，ISO 8601 格式 | `"2026-06-12"` |
+| `institution` | String | 发布预测的机构或公司名称（个人预测者填姓名） | `"摩根大通"` |
 | `targetDate` | String | 预期达到的时间，自由格式 | `"2026"`, `"2026年中"` |
+| `targetYear` | String | 目标年份分桶，用于图表与筛选 | `"2026"`, `"2030+"`, `"长期"`, `"观点"` |
 | `sentiment` | String | 市场情绪，枚举值 | `"bullish"`, `"bearish"`, `"neutral"` |
 | `content` | String | 预测内容的详细描述 | 见示例 |
-| `sourceUrl` | String | 原文链接，完整 URL | `"https://..."` |
+
+> 价格说明：`targetPrice` 与 `priceRange` 至少提供一个；纯观点类记录（如 Q4 展望、概率数据）可将 `targetPrice` 置为 `null` 并把 `targetYear` 设为 `"观点"`。
 
 ### 可选字段
 
 | 字段 | 类型 | 说明 | 示例 |
 |------|------|------|------|
 | `person` | String | 预测者姓名 | `"Arthur Hayes"` |
-| `role` | String | 预测者职位或头衔 | `"CEO"`, `"首席执行官"` |
-| `change` | Number | 预期涨跌幅百分比，可为负数 | `-88`, `150` |
+| `role` | String | 预测者职位或头衔 | `"研究主管"` |
+| `category` | String | 主体类型，决定卡片头像配色 | `"bank"` / `"asset"` / `"research"` / `"company"` / `"kol"` / `"media"` / `"market"` |
+| `targetPrice` | Number \| null | 目标价格（美元），观点类可为 `null` | `170000` |
+| `priceRange` | [min, max] | 目标价区间（如情景列表） | `[300000, 500000]` |
+| `quoteEn` | String | 分析师原话引用（英文原文） | `"$1 million per Bitcoin."` |
+| `change` | Number | 预期涨跌幅百分比，可为负数 | `-88` |
 | `longTermPrice` | Number | 长期目标价格（美元） | `500000` |
 | `longTermDate` | String | 长期目标时间 | `"2030"` |
+| `sourceName` | String | 来源显示名称 | `"Reuters"` |
+| `sourceUrl` | String | 原文链接，完整 URL；无法提供时可留空 | `"https://..."` |
+| `imageUrl` | String | 相关截图/配图链接，卡片内可点击放大 | `"https://..."` |
 
 ## 字段规则
 
@@ -113,6 +124,17 @@
 - 确保链接有效且可访问
 - 如果原文被删除，可以使用存档服务（如 archive.org）
 
+## 目标年份分桶 (targetYear)
+
+用于「年度目标价图谱」与年份筛选，允许值：
+
+| 值 | 用途 |
+|-----|------|
+| `"2025"` – `"2029"` | 具体目标年份 |
+| `"2030+"` | 2030 年及以后（如 ARK 2030、Saylor 2045） |
+| `"长期"` | 未设明确时间的长期框架（供应冲击等） |
+| `"观点"` | 无具体目标价的纯观点类记录 |
+
 ## 数据验证
 
 ### 自动验证
@@ -123,8 +145,8 @@ GitHub Actions 会在每次提交时自动验证：
 2. ✅ 必填字段完整性
 3. ✅ 字段类型正确性
 4. ✅ ID 唯一性
-5. ✅ sentiment 值有效性
-6. ✅ 价格为正数
+5. ✅ sentiment / targetYear 值有效性
+6. ✅ targetPrice 为正数或 null；priceRange 为合法区间
 
 ### 手动验证
 

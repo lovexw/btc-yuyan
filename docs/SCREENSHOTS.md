@@ -57,3 +57,21 @@
 - Windows: Snipping Tool 或 Snip & Sketch
 - Linux: GNOME Screenshot 或 Flameshot
 - 浏览器扩展: Full Page Screen Capture
+
+---
+
+## 如何为预测条目添加报道截图
+
+每条预测数据支持 `imageUrl` 字段，卡片内会展示截图并可点击放大：
+
+1. **准备截图**：打开该条预测卡片上的「查看原文 →」链接，对报道标题和关键段落截图；
+2. **保存文件**：放入 `assets/screenshots/` 目录，建议以机构+日期命名（如 `vaneck-2026-05-07.png`）；
+3. **修改数据**：在 `data/predictions.json` 对应条目中加入：
+
+```json
+"imageUrl": "assets/screenshots/vaneck-2026-05-07.png"
+```
+
+4. 刷新页面即可看到卡片中的截图（支持点击放大查看）。
+
+> 提示：也可以直接使用外链图片 URL，但建议将截图存入本仓库，避免外站防盗链或失效。

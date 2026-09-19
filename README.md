@@ -2,15 +2,18 @@
 
 一个优雅的比特币价格预测收集和归档网站，记录来自全球金融机构、专家和分析师对比特币价格的预测。
 
+**在线访问：<https://yy.btchao.com>**
+
 ## ✨ 特性
 
-- 📊 **实时统计** - 显示总预测数、平均价格、最高/最低预测
-- 🔍 **智能搜索** - 搜索机构、人名或预测内容
-- 🎯 **多维筛选** - 按情绪（看涨/看跌/中性）筛选
-- 📈 **灵活排序** - 按日期或价格排序
-- 🌓 **主题切换** - 支持深色和浅色主题
-- 📱 **响应式设计** - 完美支持移动端和桌面端
-- ⚡ **静态部署** - 纯静态网站，可部署到 Cloudflare Pages、GitHub Pages 等
+- 📊 **年度目标价图谱** — 对数坐标展示各年份机构目标价的最低—最高分布，点击年份即可筛选列表
+- 💰 **实时价格** — 主源 + 公共 API 双兜底，展示当前市价与「距 $100K」进度
+- 💬 **原话引用** — 每条预测尽量附上分析师原话（英文引用）、中文解读与来源链接
+- 🔍 **智能搜索** — 搜索机构、人名或预测内容
+- 🎯 **多维筛选** — 按情绪（看涨/看跌/中性）与目标年份（2025–2029 / 2030+ / 长期 / 观点）筛选
+- 🌓 **主题切换** — 深色（默认）与浅色主题
+- 📱 **响应式设计** — 完美支持移动端和桌面端
+- ⚡ **零依赖静态部署** — 纯静态网站，可部署到 Cloudflare Pages、GitHub Pages 等
 
 ## 🚀 快速开始
 
@@ -73,18 +76,25 @@ python3 scripts/add-prediction.py
 
 ```json
 {
-  "id": 6,
-  "date": "2025-12-20",
-  "institution": "机构名称",
-  "person": "人名",
-  "role": "职位",
+  "id": 34,
+  "date": "2026-09-19",
+  "institution": "机构或分析师名称",
+  "person": "人名（可选）",
+  "role": "职位（可选）",
+  "category": "bank",
   "targetPrice": 150000,
-  "targetDate": "2026",
+  "targetDate": "2027年底",
+  "targetYear": "2027",
   "sentiment": "bullish",
-  "content": "预测详细内容...",
-  "sourceUrl": "https://source-url.com"
+  "quoteEn": "分析师原话（可选，英文）",
+  "content": "预测详细内容（中文）...",
+  "sourceName": "来源显示名称（可选）",
+  "sourceUrl": "https://source-url.com",
+  "imageUrl": "截图链接（可选）"
 }
 ```
+
+字段说明详见 [docs/DATA_STRUCTURE.md](docs/DATA_STRUCTURE.md)。
 
 ### 字段说明
 
@@ -166,6 +176,12 @@ MIT License
 ## 📧 联系方式
 
 如有问题或建议，请通过 GitHub Issues 联系。
+
+## 🔗 相关站点
+
+- **在线演示**：[yy.btchao.com](https://yy.btchao.com)
+- **比特囤币**：[www.btchao.com](https://www.btchao.com) — AHR999 指数 · 囤比特币
+- **小吴乐意**：[www.xiaowuleyi.com](https://www.xiaowuleyi.com) — 见证比特币的每个周期
 
 ---
 
